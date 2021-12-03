@@ -2,7 +2,7 @@ var readlineSync = require("readline-sync")
 
 var userName = readlineSync.question("Welcome to Marvel superhero quiz. Please enter your name: ")
 
-console.log("Hello "+ userName +", you will be a given question about marvel superhero with 4 options to choose the answer from, only enter the letter of the option you want to choose, for e.g. A or a to answer\n\nScore more than 3 to go to Level 2.\n\n\n")
+console.log("\nHello "+ userName +", you will be a given question about marvel superhero with 4 options to choose the answer from, only enter the letter of the option you want to choose, for e.g. A or a to answer\n\nScore more than 3 to go to Level 2.\n")
 
 questionOne = {
   question: "How many avengers are there in the first avenger movie?\nA. 4\nB. 5\nC. 6\nD. 7\n",
@@ -46,7 +46,7 @@ questionEight = {
 
 questionNine = {
   question: "Who is Black Panther’s sister?\nA. Shuri\nB. Nakia\nC. Ramonda\nD. Okoye\n",
-  answer: "D"
+  answer: "A"
 }
 
 questionTen = {
@@ -59,8 +59,9 @@ var quiz1 = [questionOne, questionTwo, questionThree, questionFour, questionFive
 var quiz2 = [questionSix, questionSeven, questionEight, questionNine, questionTen]
 
 var score = 0
-function play(question, answer){
-  var userAnswer = readlineSync.question(question)
+function play(question, answer)
+{
+  var userAnswer = readlineSync.question("\n" + question)
   if(userAnswer.toLowerCase() === answer.toLowerCase()){
     score ++;
     console.log("You are right!")
@@ -72,16 +73,21 @@ function play(question, answer){
   console.log("_______ ____________ ________")
 }
 
-for(var i=0;i<quiz1.length;i++){
+for(var i=0;i<quiz1.length;i++)
+{
   play(quiz1[i].question, quiz1[i].answer)
 }
 
-if(score < 3) {
-  console.log("You don't seem like a marvel fan, your score is ", score)
-} else {
-  console.log("You know your way around the MCU,\n Let's take you to level 2\n\n")
-  for(var i=0;i<quiz2.length;i++){
-  play(quiz2[i].question, quiz2[i].answer)
+if(score < 4) 
+{
+  console.log("\nYou don't seem like a marvel fan, your score is ", score)
+} 
+else 
+{
+  console.log("\nYou know your way around the MCU,\n Let's take you to level 2\n\n")
+  for(var i=0;i<quiz2.length;i++)
+  {
+    play(quiz2[i].question, quiz2[i].answer)
+  }
 }
-console.log("Your final score ",score)
-}
+console.log("\nYour final score is " +  score + "\n\nThanks for playing!!");
